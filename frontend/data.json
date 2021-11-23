@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "name": "Red Dead Redemption 2",
+    "desc": "Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, Red Dead Redemption 2 is an epic tale of honor and loyalty at the dawn of the modern age. Includes Red Dead Redemption 2: Story Mode and Red Dead Online.",
+    "price": "640000",
+    "stock": "20",
+    "publisher": "Rockstar Games",
+    "developer": "Rockstar Games",
+    "discount": null
+  },
+  {
+    "id": 2,
+    "name": "GRAND THEFT AUTO V: PREMIUM EDITION",
+    "desc": "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.",
+    "price": "300000",
+    "stock": "20",
+    "publisher": "Rockstar Games",
+    "developer": "Rockstar Games",
+    "discount": null
+  },
+  {
+    "id": 3,
+    "name": "L.A. Noire",
+    "desc": "L.A. Noire is a violent crime thriller that blends breathtaking action with true detective work to deliver an unprecedented interactive experience. This complete edition of L.A. Noire includes the complete original game and all previously released downloadable content.",
+    "price": "200000",
+    "stock": "20",
+    "publisher": "Rockstar Games",
+    "developer": "Rockstar Games",
+    "discount": null
+  },
+  {
+    "id": 4,
+    "name": "Max Payne 3",
+    "desc": "No longer a New York City cop, Max Payne moves to São Paulo to protect a wealthy family in an effort to finally escape his troubled past. This complete edition of Max Payne 3 includes the complete original game and all previously released downloadable content.",
+    "price": "200000",
+    "stock": "20",
+    "publisher": "Rockstar Games",
+    "developer": "Rockstar Games",
+    "discount": null
+  },
+  {
+    "id": 5,
+    "name": "Bully: Scholarship Edition",
+    "desc": "Bully tells the story of mischievous 15-year-old Jimmy Hopkins as he goes through the hilarity and awkwardness of adolescence. Beat the jocks at dodge ball, play pranks on the preppies, save the nerds, kiss the girl and navigate the social hierarchy in the worst school around.",
+    "price": "115000",
+    "stock": "20",
+    "publisher": "Rockstar Games",
+    "developer": "Rockstar Games",
+    "discount": null
+  },
+  {
+    "id": 6,
+    "name": "Mafia: Definitive Edition",
+    "desc": "An inadvertent brush with the mob thrusts cabdriver Tommy Angelo into the world of organized crime. Initially uneasy about falling in with the Salieri family, the rewards become too big to ignore.",
+    "price": "490000",
+    "stock": "20",
+    "publisher": "2k",
+    "developer": "Hangar 13",
+    "discount": null
+  },
+  {
+    "id": 7,
+    "name": "Borderlands 2",
+    "desc": "The Ultimate Vault Hunter’s Upgrade lets you get the most out of the Borderlands 2 experience.",
+    "price": "135000",
+    "stock": "20",
+    "publisher": "2k",
+    "developer": "Hangar 13",
+    "discount": null
+  },
+  {
+    "id": 8,
+    "name": "NBA 2K22",
+    "desc": "NBA 2K22 puts the entire basketball universe in your hands. Anyone, anywhere can hoop in NBA 2K22",
+    "price": "660000",
+    "stock": "20",
+    "publisher": "2k",
+    "developer": "Visual Conscepts",
+    "discount": null
+  },
+  {
+    "id": 9,
+    "name": "XCOM® 2",
+    "desc": "XCOM 2 is the sequel to XCOM: Enemy Unknown, the 2012 award-winning strategy game of the year. Earth has changed and is now under alien rule. Facing impossible odds you must rebuild XCOM, and ignite a global resistance to reclaim our world and save humanity.",
+    "price": "590000",
+    "stock": "20",
+    "publisher": "2k",
+    "developer": "Feral Interactive",
+    "discount": null
+  },
+  {
+    "id": 10,
+    "name": "Sid Meier’s Civilization® VI",
+    "desc": "Civilization VI offers new ways to interact with your world, expand your empire across the map, advance your culture, and compete against history’s greatest leaders to build a civilization that will stand the test of time. Play as one of 20 historical leaders including Roosevelt (America) and Victoria (England).",
+    "price": "600000",
+    "stock": "20",
+    "publisher": "2k",
+    "developer": "Firaxis Games",
+    "discount": null
+  },
+  {
+    "id": 11,
+    "name": "DARK SOULS™ III",
+    "desc": "Dark Souls continues to push the boundaries with the latest, ambitious chapter in the critically-acclaimed and genre-defining series. Prepare yourself and Embrace The Darkness!",
+    "price": "587000",
+    "stock": "20",
+    "publisher": "Bandai Namco",
+    "developer": "FromSoftware",
+    "discount": null
+  },
+  {
+    "id": 12,
+    "name": "Project CARS 2",
+    "desc": "THE ULTIMATE DRIVER JOURNEY! Project CARS 2 delivers the soul of motor racing in the world’s most beautiful, authentic, and technically-advanced racing game.",
+    "price": "510000",
+    "stock": "20",
+    "publisher": "Bandai Namco",
+    "developer": "Slightly Mad Studio",
+    "discount": null
+  },
+  {
+    "id": 13,
+    "name": "TEKKEN 7",
+    "desc": "Discover the epic conclusion of the long-time clan warfare between members of the Mishima family. Powered by Unreal Engine 4, the legendary fighting game franchise fights back with stunning story-driven cinematic battles and intense duels that can be enjoyed with friends and rivals.",
+    "price": "420000",
+    "stock": "20",
+    "publisher": "Bandai Namco",
+    "developer": "Bandai Namco",
+    "discount": null
+  },
+  {
+    "id": 14,
+    "name": "CODE VEIN",
+    "desc": "In the face of certain death, we rise. Team up and embark on a journey to the ends of hell to unlock your past and escape your living nightmare in CODE VEIN.",
+    "price": "500000",
+    "stock": "20",
+    "publisher": "Bandai Namco",
+    "developer": "Bandai Namco",
+    "discount": null
+  },
+  {
+    "id": 15,
+    "name": "ACE COMBAT™ 7: SKIES UNKNOWN",
+    "desc": "Become an ace pilot and soar through photorealistic skies with full 360 degree movement; down enemy aircraft and experience the thrill of engaging in realistic sorties! Aerial combat has never looked or felt better!",
+    "price": "550000",
+    "stock": "20",
+    "publisher": "Bandai Namco",
+    "developer": "Bandai Namco",
+    "discount": null
+  },
+  {
+    "id": 16,
+    "name": "Satisfactory",
+    "desc": "Satisfactory is a first-person open-world factory building game with a dash of exploration and combat. Play alone or with friends, explore an alien planet, create multi-story factories, and enter conveyor belt heaven!",
+    "price": "140000",
+    "stock": "20",
+    "publisher": "Coffe Stain",
+    "developer": "Coffe Stain",
+    "discount": null
+  },
+  {
+    "id": 17,
+    "name": "Planet Zoo",
+    "desc": "Build a world for wildlife in Planet Zoo. From the developers of Planet Coaster and Zoo Tycoon comes the ultimate zoo sim. Construct detailed habitats, manage your zoo, and meet authentic living animals who think, feel and explore the world you create around them.",
+    "price": "440000",
+    "stock": "20",
+    "publisher": "Frontier Developments",
+    "developer": "Frontier Developments",
+    "discount": null
+  },
+  {
+    "id": 18,
+    "name": "BeamNG.drive",
+    "desc": "A dynamic soft-body physics vehicle simulator capable of doing just about anything",
+    "price": "120000",
+    "stock": "20",
+    "publisher": "BeamNG",
+    "developer": "BeamNG",
+    "discount": null
+  },
+  {
+    "id": 19,
+    "name": "The Long Dark",
+    "desc": "The Long Dark is a thoughtful, exploration-survival experience that challenges solo players to think for themselves as they explore an expansive frozen wilderness in the aftermath of a geomagnetic disaster. ",
+    "price": "160000",
+    "stock": "20",
+    "publisher": "Hinterland Studio",
+    "developer": "Hinterland Studio",
+    "discount": null
+  },
+  {
+    "id": 20,
+    "name": "Wreckfest",
+    "desc": "Wreckfest is a demolition derby themed racing game with soft-body damage modeling, sophisticated driving dynamics and in-depth vehicle upgrading, featuring both demolition derbies and more traditional track races. It’s all about fun, breakneck racing and over-the-top crashes",
+    "price": "254000",
+    "stock": "20",
+    "publisher": "THQ",
+    "developer": "Bugbear",
+    "discount": null
+  }
+]
