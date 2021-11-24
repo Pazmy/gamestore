@@ -1,6 +1,15 @@
 const { Product, image } = require("../models");
 const path = require("path");
 class ProductController {
+  static async getAllProduct(req, res) {
+    try {
+      const results = await Product.findAll({ include: [image] });
+      //   const res2 = await image.findAll({ include: [Product] });
+      res.status(200).json({ results });
+    } catch (error) {
+      res.status(500).json({ message: "error" });
+    }
+  }
   static async addProduct(req, res) {
     try {
       const {
@@ -37,7 +46,7 @@ class ProductController {
 
       res.status(200).json({ message: "ok" });
     } catch (error) {
-      res.send({ error, message: "catch" });
+      res.status(500).json({ error, message: "catch" });
     }
   }
 }
