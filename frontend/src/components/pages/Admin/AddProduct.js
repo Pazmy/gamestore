@@ -1,18 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 const Container = styled.div`
   margin: 20px;
 `;
 const AddProduct = () => {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState();
-  const [stock, setStock] = useState();
+  const [price, setPrice] = useState(0);
+  const [stock, setStock] = useState(0);
   const [desc, setDesc] = useState("");
   const [publisher, setPublisher] = useState("");
   const [developer, setDeveloper] = useState("");
   const [discount, setDiscount] = useState("");
   const [files, setFiles] = useState();
+  const [genres, setGenres] = useState([]);
+  // const [checkedBox, setCheckedBox] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    axios.get("http://localhost:3001/genres/").then((res) => {
+      const data = res.data.results;
+      // setCheckedBox(new Array(data.length).fill(false))
+      setGenres(data);
+    });
+  }, []);
+  function handlerChecked(e, position) {
+    console.log(e.target.checked);
+
+    const updated = genres.map((item, index) => {
+      if (position === index) {
+        item.checked = e.target.checked;
+        return item;
+      } else {
+        return item;
+      }
+    });
+    setGenres(updated);
+    console.log(genres);
+  }
   function handlerChange(e, fieldName) {
     switch (fieldName) {
       case "name":
@@ -55,15 +80,22 @@ const AddProduct = () => {
     data.append("publisher", publisher);
     data.append("discount", discount);
     data.append("desc", desc);
+    genres.forEach((genre) => {
+      if (genre.checked && genre.checked === true) {
+        data.append("genresId", genre.id);
+      }
+    });
+    console.log(data.getAll("genresId"));
+    console.log(data.get("name"));
     axios
       .post("http://localhost:3001/products/add", data)
       .then((res) => {
         console.log(res.data);
+        navigate("/admin/products/");
       })
       .catch((err) => {
         console.log(err.response);
       });
-    // console.log(data.getAll("image"));
   }
   return (
     <Container>
@@ -133,6 +165,23 @@ const AddProduct = () => {
           value={discount}
           onChange={(e) => handlerChange(e, "discount")}
         />
+        <div>
+          {genres.map((genre, i) => {
+            return (
+              <label htmlFor={genre.name} className="block" key={i}>
+                <input
+                  type="checkbox"
+                  className="mr-1"
+                  id={genre.name}
+                  name={genre.name}
+                  value={genre.id}
+                  onChange={(e) => handlerChecked(e, i)}
+                />
+                {genre.name}
+              </label>
+            );
+          })}
+        </div>
         <label htmlFor="" className="block">
           Description
         </label>
