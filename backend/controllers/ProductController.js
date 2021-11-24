@@ -1,13 +1,26 @@
-const { Product, image } = require("../models");
+const { Product, image, ProductGenre, Genre } = require("../models");
 const path = require("path");
 class ProductController {
   static async getAllProduct(req, res) {
     try {
-      const results = await Product.findAll({ include: [image] });
-      //   const res2 = await image.findAll({ include: [Product] });
-      res.status(200).json({ results });
+      let results = await Product.findAll({ include: [image] });
+      const res2 = await ProductGenre.findAll({ include: [Genre, Product] });
+
+      results.forEach((result, index) => {
+        let tempGenres = [];
+        res2.forEach((item) => {
+          if (result.id === item.ProductId) {
+            tempGenres.push(item.Genre.name);
+          }
+        });
+
+        results[index].dataValues.genres = tempGenres;
+        tempGenres = [];
+      });
+
+      res.status(200).json({ results, res2 });
     } catch (error) {
-      res.status(500).json({ message: "error" });
+      res.status(500).json({ message: error });
     }
   }
   static async addProduct(req, res) {
@@ -20,8 +33,9 @@ class ProductController {
         publisher,
         developer,
         discount = null,
+        genresId,
       } = req.body;
-
+      console.log(name, price, stock);
       const images = req.files;
       const product = await Product.create({
         name,
@@ -32,17 +46,29 @@ class ProductController {
         developer,
         discount,
       });
-      await images.forEach(async (i) => {
-        const primary = i.originalname.includes("list") ? true : false;
-        await image.create({
-          filename: i.filename,
-          filesize: i.size,
-          filetype: path.extname(i.filename),
-          path: i.path,
-          primary,
-          ProductId: product.id,
+      if (!genresId) {
+        res.status(400).json("Genre must be checked");
+      } else {
+        console.log(genresId);
+        await genresId.forEach(async (genre) => {
+          await ProductGenre.create({ ProductId: 1, GenreId: Number(genre) });
         });
-      });
+      }
+      if (!images) {
+        res.status(400).json("Need upload image");
+      } else {
+        await images.forEach(async (i) => {
+          const primary = i.originalname.includes("list") ? true : false;
+          await image.create({
+            filename: i.filename,
+            filesize: i.size,
+            filetype: path.extname(i.filename),
+            path: i.path,
+            primary,
+            ProductId: product.id,
+          });
+        });
+      }
 
       res.status(200).json({ message: "ok" });
     } catch (error) {
