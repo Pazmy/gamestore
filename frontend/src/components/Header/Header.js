@@ -8,6 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   color: white;
+  margin-bottom: 30px;
 `;
 const Left = styled.div`
   display: flex;

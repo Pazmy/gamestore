@@ -15,7 +15,6 @@ const AddProduct = () => {
   const [discount, setDiscount] = useState("");
   const [files, setFiles] = useState();
   const [genres, setGenres] = useState([]);
-  // const [checkedBox, setCheckedBox] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:3001/genres/").then((res) => {
@@ -86,7 +85,7 @@ const AddProduct = () => {
       }
     });
     console.log(data.getAll("genresId"));
-    console.log(data.get("name"));
+    // console.log(data.get("name"));
     axios
       .post("http://localhost:3001/products/add", data)
       .then((res) => {
@@ -200,7 +199,7 @@ const AddProduct = () => {
         />
         <input
           type="submit"
-          className="p-2 bg-blue-400"
+          className="p-2 bg-blue-400 cursor-pointer rounded"
           onClick={submitHandler}
         />
       </form>

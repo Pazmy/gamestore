@@ -33,6 +33,17 @@ const Product = () => {
         console.log(err);
       });
   }, []);
+  function handlerDelete(id) {
+    axios
+      .delete(`http://localhost:3001/products/delete/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <Container>
       <h1 className="bold text-4xl">List Products</h1>
@@ -65,7 +76,7 @@ const Product = () => {
 
             return (
               <tr key={product.id}>
-                <td>{(i += i + 1)}</td>
+                <td>{(i += 1)}</td>
                 <td>{product.name}</td>
                 <td>
                   <img
@@ -84,10 +95,16 @@ const Product = () => {
                 <td>{product.genres.join(",")}</td>
                 <td>
                   <div className="flex justify-center items-center">
-                    <button className="bg-blue-700 text-white mx-2 px-4 py-2 rounded">
+                    <Link
+                      to={`/admin/products/edit/${product.id}`}
+                      className="bg-blue-700 text-white mx-2 px-4 py-2 rounded"
+                    >
                       Edit
-                    </button>
-                    <button className="bg-red-700 text-white mx-2 px-4 py-2 rounded">
+                    </Link>
+                    <button
+                      className="bg-red-700 text-white mx-2 px-4 py-2 rounded"
+                      onClick={() => handlerDelete(product.id)}
+                    >
                       Delete
                     </button>
                   </div>

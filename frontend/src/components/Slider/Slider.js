@@ -8,8 +8,8 @@ import {
   SlideShowContainer,
   SlideShowSlider,
   Slide,
-  SlideShowDots,
-  SlideShowDot,
+  // SlideShowDots,
+  // SlideShowDot,
   Text,
 } from "./Slider.styles";
 

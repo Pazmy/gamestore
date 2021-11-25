@@ -7,6 +7,7 @@ import Register from "./components/pages/Register";
 import Admin from "./components/pages/Admin/Admin";
 import AddProduct from "./components/pages/Admin/AddProduct";
 import Product from "./components/pages/Admin/Product";
+import EditProduct from "./components/pages/Admin/EditProduct";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/products/" element={<Product />} />
         <Route path="/admin/products/add" element={<AddProduct />} />
+        <Route path="/admin/products/edit/:id" element={<EditProduct />} />
       </Routes>
     </Router>
   );
