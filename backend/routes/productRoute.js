@@ -10,5 +10,8 @@ productRoute.post(
   uploads.array("image", 6),
   ProductController.addProduct
 );
+productRoute.get("/edit/:id", ProductController.editProductGet);
+productRoute.put("/edit/:id", ProductController.editProductPut);
+productRoute.delete("/delete/:id", ProductController.deleteProduct);
 
 module.exports = productRoute;
