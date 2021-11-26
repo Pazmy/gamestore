@@ -1,8 +1,16 @@
 import React from "react";
-// import Slider from "../../Slider/Slider";
+import styled from "styled-components";
+import FeaturedDeals from "../../FeaturedDeals/FeaturedDeals";
 
+const Container = styled.div`
+  padding: 0 40px;
+`;
 const Home = () => {
-  return <div>{/* <Slider /> */}</div>;
+  return (
+    <Container>
+      <FeaturedDeals />
+    </Container>
+  );
 };
 
 export default Home;

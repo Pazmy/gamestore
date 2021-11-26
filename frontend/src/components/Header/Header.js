@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 const Container = styled.div`
   background-color: #2a2a2a;
   height: 60px;
@@ -48,6 +49,7 @@ const DropdownContent = styled.div`
   }
 `;
 const Header = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
   const [user, setUser] = useState(false);
   useEffect(() => {
     setUser(false);
@@ -120,7 +122,7 @@ const Header = () => {
               <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z" />
             </svg>
           </Link>
-          0
+          {quantity}
         </Cart>
       </Right>
     </Container>

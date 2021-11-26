@@ -115,6 +115,16 @@ const AddProduct = () => {
           onChange={(e) => handlerChange(e, "name")}
         />
         <label htmlFor="" className="block">
+          Description
+        </label>
+        <textarea
+          type="text"
+          name="description"
+          className="bg-gray-200 mb-2 block w-96 h-32"
+          value={desc}
+          onChange={(e) => handlerChange(e, "desc")}
+        />
+        <label htmlFor="" className="block">
           Price
         </label>
         <input
@@ -181,16 +191,7 @@ const AddProduct = () => {
             );
           })}
         </div>
-        <label htmlFor="" className="block">
-          Description
-        </label>
-        <textarea
-          type="text"
-          name="description"
-          className="bg-gray-200 mb-2 block w-96 h-32"
-          value={desc}
-          onChange={(e) => handlerChange(e, "desc")}
-        />
+
         <input
           type="file"
           multiple
