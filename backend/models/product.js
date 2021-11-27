@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Product.hasMany(models.image);
       Product.belongsToMany(models.Genre, { through: models.ProductGenre });
+      Product.belongsToMany(models.Order, { through: models.ProductOrder });
     }
   }
   Product.init(
