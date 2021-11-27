@@ -49,7 +49,14 @@ class UserController {
             name: userResult.name,
             role: userResult.role,
           });
-          res.status(200).json({ token });
+          res
+            .status(200)
+            .json({
+              token,
+              email,
+              name: userResult.name,
+              role: userResult.role,
+            });
         } else {
           throw { message: "Email or password is not correct" };
         }

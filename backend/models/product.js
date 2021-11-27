@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: { notEmpty: "name cant be empty" },
       },
       desc: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         validate: { notEmpty: "desc cant be empty" },
       },
       price: {

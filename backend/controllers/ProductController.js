@@ -18,7 +18,7 @@ class ProductController {
         tempGenres = [];
       });
 
-      res.status(200).json({ results, res2 });
+      res.status(200).json({ results });
     } catch (error) {
       res.status(500).json({ message: error });
     }
@@ -53,13 +53,19 @@ class ProductController {
         discount,
       });
 
-      // console.log(genresId);
-      await genresId.forEach(async (genre) => {
+      if (Array.isArray(genresId)) {
+        genresId.forEach(async (genre) => {
+          await ProductGenre.create({
+            ProductId: product.id,
+            GenreId: Number(genre),
+          });
+        });
+      } else {
         await ProductGenre.create({
           ProductId: product.id,
-          GenreId: Number(genre),
+          GenreId: Number(genresId),
         });
-      });
+      }
 
       await images.forEach(async (i) => {
         const primary = i.originalname.includes("list") ? true : false;
@@ -78,7 +84,7 @@ class ProductController {
       res.status(500).json({ error, message: "catch" });
     }
   }
-  static async editProductGet(req, res) {
+  static async getSingleProduct(req, res) {
     try {
       const id = +req.params.id;
       let product = await Product.findOne({ where: { id }, include: [image] });
