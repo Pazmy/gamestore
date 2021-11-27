@@ -13,7 +13,12 @@ const cartSlice = createSlice({
       state.products.push(action.payload.product);
       state.total += action.payload.price;
     },
+    logoutCart: (state) => {
+      state.quantity = 0;
+      state.products = [];
+      state.total = 0;
+    },
   },
 });
-export const { addProduct } = cartSlice.actions;
+export const { addProduct, logoutCart } = cartSlice.actions;
 export default cartSlice.reducer;

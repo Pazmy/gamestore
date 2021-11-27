@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { formatter } from "../../../helper/formatter";
 const Container = styled.div`
@@ -21,9 +21,13 @@ const Table = styled.table`
     padding: 8px 8px;
   }
 `;
-const Product = () => {
+const Product = ({ user }) => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   useEffect(() => {
+    if (!user || user?.role !== "admin") {
+      navigate("/");
+    }
     axios
       .get("http://localhost:3001/products/")
       .then((res) => {
@@ -32,7 +36,7 @@ const Product = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [navigate, user]);
   function handlerDelete(id) {
     axios
       .delete(`http://localhost:3001/products/delete/${id}`)

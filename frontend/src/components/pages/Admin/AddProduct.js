@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 const Container = styled.div`
   margin: 20px;
 `;
-const AddProduct = () => {
+const AddProduct = ({ user }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
@@ -17,12 +17,15 @@ const AddProduct = () => {
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
+    if (!user || user?.role !== "admin") {
+      navigate("/");
+    }
     axios.get("http://localhost:3001/genres/").then((res) => {
       const data = res.data.results;
       // setCheckedBox(new Array(data.length).fill(false))
       setGenres(data);
     });
-  }, []);
+  }, [navigate, user]);
   function handlerChecked(e, position) {
     console.log(e.target.checked);
 

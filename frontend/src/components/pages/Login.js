@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/userRedux";
 import Loader from "../Loader/Loader";
 
 const Container = styled.div`
@@ -48,17 +50,24 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   async function handleClick(e) {
     e.preventDefault();
     try {
       setLoading(true);
+      console.log(email, password);
       const response = await axios.post("http://localhost:3001/users/login", {
         email,
         password,
       });
-      console.log(response);
-      // if (response.data.status === "error") setErr(response.data.message);
+      console.log(response.data);
+
+      const { name, role, token } = response.data;
+      dispatch(login({ name, email: response.data.email, role, token }));
       setLoading(false);
+      navigate("/");
     } catch (error) {
       if (error.response.data.message) {
         setErr(error.response.data.message);

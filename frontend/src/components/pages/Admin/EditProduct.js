@@ -13,7 +13,7 @@ const Content = styled.div`
   height: auto;
 `;
 
-const EditProduct = () => {
+const EditProduct = ({ user }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
@@ -26,26 +26,27 @@ const EditProduct = () => {
   //   const [checkedBox, setCheckedBox] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
-  useEffect(
-    () =>
-      axios
-        .get(`http://localhost:3001/products/edit/${id}`)
-        .then((res) => {
-          const product = res.data.product;
-          //   const allGenres = res.data.allGenres;
-          setName(product.name);
-          setPrice(product.price);
-          setStock(product.stock);
-          setPublisher(product.publisher);
-          setDeveloper(product.developer);
-          setDiscount(product.discount);
-          setDesc(product.desc);
-          //   setCheckedBox(product.genres);
-          //   setGenres(allGenres);
-        })
-        .catch((err) => console.log(err)),
-    [id]
-  );
+  useEffect(() => {
+    if (!user || user?.role !== "admin") {
+      navigate("/");
+    }
+    axios
+      .get(`http://localhost:3001/products/edit/${id}`)
+      .then((res) => {
+        const product = res.data.product;
+        //   const allGenres = res.data.allGenres;
+        setName(product.name);
+        setPrice(product.price);
+        setStock(product.stock);
+        setPublisher(product.publisher);
+        setDeveloper(product.developer);
+        setDiscount(product.discount);
+        setDesc(product.desc);
+        //   setCheckedBox(product.genres);
+        //   setGenres(allGenres);
+      })
+      .catch((err) => console.log(err));
+  }, [id, navigate, user]);
   //   function handlerChecked(e, position) {
   //     console.log(e.target.checked);
 

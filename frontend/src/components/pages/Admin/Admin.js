@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Container = styled.div``;
 const SideBar = styled.div`
   margin-top: 20px;
@@ -12,7 +12,13 @@ const SideBar = styled.div`
   height: 500px;
   padding: 8px 12px;
 `;
-const Admin = () => {
+const Admin = ({ user }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user || user?.role !== "admin") {
+      navigate("/");
+    }
+  }, [navigate, user]);
   return (
     <Container>
       <SideBar>

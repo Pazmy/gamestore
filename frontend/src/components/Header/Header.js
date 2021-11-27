@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/userRedux";
+import { logoutCart } from "../../redux/cartRedux";
 const Container = styled.div`
   background-color: #2a2a2a;
   height: 60px;
@@ -48,15 +50,19 @@ const DropdownContent = styled.div`
     display: block;
   }
 `;
-const Header = () => {
+const Header = ({ user }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const quantity = useSelector((state) => state.cart.quantity);
-  const [user, setUser] = useState(false);
-  useEffect(() => {
-    setUser(false);
-  }, []);
+
   const toggleDropdown = useRef(false);
   const handleDropdown = () => {
     toggleDropdown.current.classList.toggle("show");
+  };
+  const handleLogout = () => {
+    dispatch(logout(null));
+    dispatch(logoutCart());
+    navigate("/login");
   };
   return (
     <Container className="px-8 py-4">
@@ -83,7 +89,7 @@ const Header = () => {
                   <path d="M12 2c3.032 0 5.5 2.467 5.5 5.5 0 1.458-.483 3.196-3.248 5.59 4.111 1.961 6.602 5.253 7.482 8.909h-19.486c.955-4.188 4.005-7.399 7.519-8.889-1.601-1.287-3.267-3.323-3.267-5.61 0-3.033 2.468-5.5 5.5-5.5zm0-2c-4.142 0-7.5 3.357-7.5 7.5 0 2.012.797 3.834 2.086 5.182-5.03 3.009-6.586 8.501-6.586 11.318h24c0-2.791-1.657-8.28-6.59-11.314 1.292-1.348 2.09-3.172 2.09-5.186 0-4.143-3.358-7.5-7.5-7.5z" />
                 </svg>
               </button>
-              <span className="ml-2">User1</span>
+              <span className="ml-2">{user.name}</span>
             </User>
             <DropdownContent ref={toggleDropdown}>
               <Link
@@ -98,12 +104,12 @@ const Header = () => {
               >
                 Orders
               </Link>
-              <Link
-                className="block text-center hover:bg-gray-700 p-4 text-gray-200"
-                to="/users/info"
+              <button
+                className="block text-center hover:bg-gray-700 p-4 text-gray-200 w-full"
+                onClick={handleLogout}
               >
                 Log out
-              </Link>
+              </button>
             </DropdownContent>
           </Dropdown>
         ) : (
@@ -111,7 +117,7 @@ const Header = () => {
         )}
 
         <Cart>
-          <Link to="/cart" className="mr-2">
+          <Link to={user ? "/cart" : "/login"} className="mr-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

@@ -10,21 +10,29 @@ import AddProduct from "./components/pages/Admin/AddProduct";
 import Product from "./components/pages/Admin/Product";
 import EditProduct from "./components/pages/Admin/EditProduct";
 import UserProduct from "./components/pages/UserProduct";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Router>
-      <Header />
+      <Header user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart user={user} />} />
         <Route path="/product/:id" element={<UserProduct />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/products/" element={<Product />} />
-        <Route path="/admin/products/add" element={<AddProduct />} />
-        <Route path="/admin/products/edit/:id" element={<EditProduct />} />
+        <Route path="/admin" element={<Admin user={user} />} />
+        <Route path="/admin/products/" element={<Product user={user} />} />
+        <Route
+          path="/admin/products/add"
+          element={<AddProduct user={user} />}
+        />
+        <Route
+          path="/admin/products/edit/:id"
+          element={<EditProduct user={user} />}
+        />
       </Routes>
     </Router>
   );
