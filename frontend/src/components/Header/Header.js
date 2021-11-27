@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userRedux";
-import { logoutCart } from "../../redux/cartRedux";
+import { clearCart } from "../../redux/cartRedux";
 const Container = styled.div`
   background-color: #2a2a2a;
   height: 60px;
@@ -61,7 +61,7 @@ const Header = ({ user }) => {
   };
   const handleLogout = () => {
     dispatch(logout(null));
-    dispatch(logoutCart());
+    dispatch(clearCart());
     navigate("/login");
   };
   return (
@@ -100,7 +100,7 @@ const Header = ({ user }) => {
               </Link>
               <Link
                 className="block text-center hover:bg-gray-700 p-4 text-gray-200"
-                to="/users/info"
+                to="/order"
               >
                 Orders
               </Link>

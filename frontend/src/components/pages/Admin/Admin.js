@@ -22,8 +22,8 @@ const Admin = ({ user }) => {
   return (
     <Container>
       <SideBar>
-        <Link to="/Products">Products</Link>
-        <Link to="/Users">Users</Link>
+        <Link to="/admin/Products">Products</Link>
+        <Link to="/admin/Users">Users</Link>
       </SideBar>
     </Container>
   );

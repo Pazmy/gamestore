@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
@@ -50,6 +50,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   async function handleClick(e) {
     e.preventDefault();
     try {
@@ -62,6 +63,7 @@ const Register = () => {
 
       if (response.data.status === "error") setErr(response.data.message);
       setLoading(false);
+      navigate("/login");
     } catch (error) {
       if (error.response.data.message) {
         setErr(error.response.data.message);

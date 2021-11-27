@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { formatter } from "../../helper/formatter";
 import { addProduct } from "../../redux/cartRedux";
@@ -45,20 +46,26 @@ const Section1 = styled.div``;
 const UserProduct = () => {
   const [product, setProduct] = useState();
   const [discount, setDiscount] = useState();
+  const [checkout, setCheckout] = useState(false);
   const [calc, setCalc] = useState();
   const { id } = useParams();
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.cart.products);
   useEffect(() => {
     axios
       .get(`http://localhost:3001/products/${id}`)
       .then((res) => {
         let data = res.data.product;
         setProduct(data);
+        let alreadyInCart = products.find((item) => {
+          return item.id === data.id;
+        });
+        if (alreadyInCart) setCheckout(true);
         setDiscount(data.discount ? data.discount.slice(0, 2) : "");
         setCalc(discount ? (data.price * discount) / 100 : false);
       })
       .catch((err) => console.log(err.response));
-  }, [id, discount]);
+  }, [id, discount, products]);
   function handleClick() {
     dispatch(
       addProduct({
@@ -66,6 +73,7 @@ const UserProduct = () => {
         price: discount ? calc : product.price,
       })
     );
+    setCheckout(true);
   }
   return (
     <Container>
@@ -105,12 +113,21 @@ const UserProduct = () => {
                   </Price>
 
                   <AddToCart>
-                    <button
-                      className="bg-black text-white w-full rounded p-2"
-                      onClick={handleClick}
-                    >
-                      Add to cart
-                    </button>
+                    {checkout ? (
+                      <Link
+                        to="/cart"
+                        className="bg-black text-white w-full flex justify-center  rounded p-2"
+                      >
+                        Checkout Now
+                      </Link>
+                    ) : (
+                      <button
+                        className="bg-black text-white w-full rounded p-2"
+                        onClick={handleClick}
+                      >
+                        Add to cart
+                      </button>
+                    )}
                   </AddToCart>
                 </div>
               </Right>
