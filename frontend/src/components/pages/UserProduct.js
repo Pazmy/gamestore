@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { formatter } from "../../helper/formatter";
 import { addProduct } from "../../redux/cartRedux";
+import Slideshow from "../Slideshow/Slideshow";
 
 const Container = styled.div`
   padding: 0 40px;
@@ -19,13 +20,10 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
 `;
 const Left = styled.div`
-  border: 1px solid black;
-  width: 100%;
-  height: 400px;
+  height: auto;
   margin-right: 18px;
 `;
 const Right = styled.div`
-  /* border: 1px solid black; */
   height: auto;
   padding-bottom: 12px;
 `;
@@ -48,6 +46,7 @@ const UserProduct = () => {
   const [discount, setDiscount] = useState();
   const [checkout, setCheckout] = useState(false);
   const [calc, setCalc] = useState();
+  const [images, setImages] = useState([]);
   const { id } = useParams();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
@@ -61,6 +60,11 @@ const UserProduct = () => {
           return item.id === data.id;
         });
         if (alreadyInCart) setCheckout(true);
+        let filterImg = data.images.filter((img) =>
+          img.filename.includes("slide")
+        );
+        setImages(filterImg);
+
         setDiscount(data.discount ? data.discount.slice(0, 2) : "");
         setCalc(discount ? (data.price * discount) / 100 : false);
       })
@@ -82,7 +86,9 @@ const UserProduct = () => {
           <h1 className="text-bold text-4xl mb-4">{product.name}</h1>
           <Content>
             <ContentWrapper>
-              <Left></Left>
+              <Left>
+                <Slideshow images={images} />
+              </Left>
               <Right>
                 <div className="shadow-2xl rounded">
                   <img

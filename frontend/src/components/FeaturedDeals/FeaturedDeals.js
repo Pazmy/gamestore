@@ -25,9 +25,7 @@ const FeaturedDeals = () => {
       <h2 className="text-xl font-medium">Feature Deals</h2>
       <ListItem>
         {products.map((product, i) => {
-          if (product.discount) {
-            return <Item product={product} key={i} />;
-          }
+          return <Item product={product} key={i} />;
         })}
       </ListItem>
     </Container>
