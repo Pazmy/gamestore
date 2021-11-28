@@ -30,6 +30,8 @@ const Right = styled.div`
 const Price = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 18px;
   .line {
     text-decoration: line-through;
@@ -98,12 +100,12 @@ const UserProduct = () => {
                     alt={product.name}
                   />
                   <Price>
-                    <span className={calc ? "line" : "font-bold"}>
+                    <span className={`${calc ? "line" : "font-bold"} text-lg`}>
                       {formatter.format(product.price)}
                     </span>
                     {calc ? (
-                      <span className="font-bold ml-2">
-                        {formatter.format(calc)}{" "}
+                      <span className="font-bold text-lg">
+                        {formatter.format(calc)}
                       </span>
                     ) : (
                       ""

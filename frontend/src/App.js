@@ -12,6 +12,7 @@ import EditProduct from "./components/pages/Admin/EditProduct";
 import UserProduct from "./components/pages/UserProduct";
 import { useSelector } from "react-redux";
 import Order from "./components/pages/Order";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -36,6 +37,7 @@ function App() {
           element={<EditProduct user={user} />}
         />
       </Routes>
+      <Footer />
     </Router>
   );
 }
