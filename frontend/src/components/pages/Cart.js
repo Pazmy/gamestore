@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { formatter } from "../../helper/formatter";
 import axios from "axios";
@@ -30,10 +31,16 @@ const Checkout = styled.div`
 `;
 const Cart = ({ user }) => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
   let totalPrice = 0;
   const url = "http://localhost:3001/";
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  });
   function handleClick() {
     setLoading(true);
     try {

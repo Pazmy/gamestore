@@ -67,7 +67,7 @@ const Header = ({ user }) => {
   return (
     <Container className="px-8 py-4">
       <Left>
-        <Link className="mx-2" to="/">
+        <Link className="mx-2 text-xl font-bold italic" to="/">
           Gamestore
         </Link>
         <Link className="mx-2" to="/">
